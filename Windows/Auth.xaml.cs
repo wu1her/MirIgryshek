@@ -67,11 +67,6 @@ namespace MirIgryshek.Windows
             }
         }
 
-        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void GoustButton_Click(object sender, RoutedEventArgs e)
         {
             new Katalog(null).Show();

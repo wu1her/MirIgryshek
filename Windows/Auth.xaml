@@ -23,9 +23,6 @@
             <Button Style="{StaticResource Button}" x:Name="AuthButton" Click="AuthButton_Click">
                 Войти
             </Button>
-            <Button Style="{StaticResource Button}" x:Name="RegistrationButton" Click="RegistrationButton_Click">
-                Зарегистрироваться
-            </Button>
             <Button Style="{StaticResource Button}" x:Name="GoustButton" Click="GoustButton_Click">
                 Войти как гость
             </Button>
