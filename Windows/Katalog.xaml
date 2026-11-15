@@ -13,11 +13,20 @@
             <TextBlock Style="{StaticResource MenuText}">Мир игрушек</TextBlock>
             <TextBlock Style="{StaticResource MenuText}">Каталог</TextBlock>
             <Button Style="{StaticResource Button}" x:Name="Exit" Click="Exit_Click">Выйти</Button>
+            <Button Style="{StaticResource Button}" x:Name="TovarAdd" Click="TovarAdd_Click" Visibility="Visible">Добавление товара</Button>
             <TextBlock Style="{StaticResource MenuText}" x:Name="UserBlock" DockPanel.Dock="Right" Width="350"></TextBlock>
         </DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" Visibility="Visible" x:Name="Filtr">
-            <TextBox Text="Поиск" Width="200" x:Name="Poisk"/>
-            <ComboBox x:Name="Filtr_postavshik"/>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" x:Name="Filtr" Visibility="Visible">
+            <TextBox Width="200" x:Name="Poisk" TextChanged="PoiskVvod"/>
+            <ComboBox x:Name="Filtr_postavshik" DisplayMemberPath="Ima" SelectionChanged="FiltrSelect">
+            </ComboBox>
+            <ComboBox x:Name="Sortirovka" SelectionChanged="FiltrSelect">
+                <ComboBoxItem Content="Цена по возрастанию"/>
+                <ComboBoxItem Content="Цена по убыванию"/>
+                <ComboBoxItem Content="Склад по возрастанию"/>
+                <ComboBoxItem Content="Склад по убыванию"/>
+                <ComboBoxItem Content="Без ничего"/>
+            </ComboBox>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <StackPanel x:Name="Cards">

@@ -2,11 +2,13 @@
 using MirIgryshek.Models;
 using System.Linq;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace MirIgryshek.Windows
 {
     public partial class Katalog : Window
     {
+        private List<Tovar> vseTovary;
         public Katalog(Polzovatel user)
         {
             InitializeComponent();
@@ -17,23 +19,20 @@ namespace MirIgryshek.Windows
 
             using (var db = new AppDbContext())
             {
-                var product = db.Tovar
+                vseTovary = db.Tovar
                     .Include(tovar => tovar.TovarPostavshik)
                     .ThenInclude(svyaz => svyaz.IdPostavshikNavigation)
                     .Include(tovar => tovar.TovarProizvoditel)
                     .ThenInclude(svyaz => svyaz.IdProizvoditelNavigation)
                     .Include(tovar => tovar.TovarKategoria)
-                    .ThenInclude(svyaz => svyaz.IdKategoriaNavigation);
-
-                foreach (var tovar in product)
-                {
-                    Cards.Children.Add(new TovarCard(tovar));
-                }
+                    .ThenInclude(svyaz => svyaz.IdKategoriaNavigation)
+                    .ToList();
 
                 if (user != null && db.PolzovatelRole.Any(
-                    role => role.Login == user.Login && role.IdRole == 1 || role.IdRole == 2))
+                    role => role.Login == user.Login && (role.IdRole == 1 || role.IdRole == 2)))
                 {
                     Filtr.Visibility = Visibility.Visible;
+                    TovarAdd.Visibility = Visibility.Visible;
                 }
 
                 var postavshik = db.Postavshik.ToList();
@@ -46,9 +45,45 @@ namespace MirIgryshek.Windows
                 Filtr_postavshik.ItemsSource = postavshik;
                 Filtr_postavshik.SelectedIndex = 0;
 
+                Obnovatovar();
             }
         }
 
+        private void Obnovatovar()
+        {
+            if(vseTovary == null)
+                return;
+            var tovary = vseTovary.AsEnumerable();
+            
+
+            var poisk = Poisk.Text.Trim().ToLower();
+            tovary = tovary.Where(
+                tovar => tovar.Ima.ToLower().Contains(poisk));
+
+
+            var postavshik = Filtr_postavshik.SelectedItem as Postavshik;
+            if (postavshik != null && postavshik.IdPostavshik != 0) 
+            {
+                tovary = tovary.Where(tovar => tovar.TovarPostavshik.Any(svyaz => svyaz.IdPostavshik == postavshik.IdPostavshik));
+            }
+
+            if (Sortirovka.SelectedIndex == 0)
+                tovary = tovary.OrderBy(tovar => tovar.Cena);
+            else if (Sortirovka.SelectedIndex == 1)
+                tovary = tovary.OrderByDescending(tovar => tovar.Cena);
+            else if (Sortirovka.SelectedIndex == 2)
+                tovary = tovary.OrderBy(tovar => tovar.Kolichestvo);
+            else if (Sortirovka.SelectedIndex == 3)
+                tovary = tovary.OrderByDescending(tovar => tovar.Kolichestvo);
+            
+
+            Cards.Children.Clear();
+            foreach(var tovar in tovary)
+            {
+                Cards.Children.Add(new TovarCard(tovar));
+            }
+
+        }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -59,6 +94,21 @@ namespace MirIgryshek.Windows
             var windowauth = new Auth();
             windowauth.Show();
             Close();
+        }
+
+        private void PoiskVvod(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Obnovatovar();
+        }
+
+        private void FiltrSelect(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Obnovatovar();
+        }
+
+        private void TovarAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
