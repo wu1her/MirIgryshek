@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MirIgryshek.Windows"
         mc:Ignorable="d"
-        Title="Katalog"
+        Title="Каталог"
         Style="{StaticResource Window}">
     <DockPanel >
         <DockPanel Height="70" DockPanel.Dock="Top">
@@ -17,9 +17,7 @@
         </DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" Visibility="Visible" x:Name="Filtr">
             <TextBox Text="Поиск" Width="200" x:Name="Poisk"/>
-            <ComboBox x:Name="Filtr_proizvoditel"/>
             <ComboBox x:Name="Filtr_postavshik"/>
-            <ComboBox x:Name="Filtr_kategoria"/>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <StackPanel x:Name="Cards">
