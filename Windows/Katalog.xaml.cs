@@ -32,7 +32,13 @@ namespace MirIgryshek.Windows
                     role => role.Login == user.Login && (role.IdRole == 1 || role.IdRole == 2)))
                 {
                     Filtr.Visibility = Visibility.Visible;
+                }
+
+                if (user != null && db.PolzovatelRole.Any(
+                    role => role.Login == user.Login && role.IdRole == 1))
+                {
                     TovarAdd.Visibility = Visibility.Visible;
+                    Zakazi.Visibility = Visibility.Visible;
                 }
 
                 var postavshik = db.Postavshik.ToList();
@@ -108,7 +114,14 @@ namespace MirIgryshek.Windows
 
         private void TovarAdd_Click(object sender, RoutedEventArgs e)
         {
+            var okno = new TovarRedactir(null);
+            okno.ShowDialog();
+        }
 
+        private void Zakazi_Click(object sender, RoutedEventArgs e)
+        {
+            //var okno = new Zakazi(null);
+            //Close();
         }
     }
 }
