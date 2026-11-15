@@ -28,6 +28,7 @@ namespace MirIgryshek.Windows
             Cena.Text = "Цена: " + tovar.Cena + " ";
             Edinica.Text = "Единица измерения: " + tovar.Izmerenie;
             Kolichestvo.Text = "Количество на складе: " + tovar.Kolichestvo;
+            Skidka.Text = "Действующая скидка: " + tovar.Skidka;
 
             try
             {

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:MirIgryshek.Windows"
         mc:Ignorable="d"
         
-        Height="200" Width="850" Background="{StaticResource Akcent}">
+        Height="200" Width="900" Background="{StaticResource Akcent}">
     <DockPanel >
         <Image x:Name="Photo"/>
-        <StackPanel Orientation="Vertical">
-            <TextBlock x:Name="ManeCardText" />
-            <TextBlock x:Name="Opisanie" />
+        <StackPanel Orientation="Vertical" MaxWidth="800">
+            <TextBlock x:Name="ManeCardText" TextWrapping="Wrap" MaxWidth="500"/>
+            <TextBlock x:Name="Opisanie" TextWrapping="Wrap" MaxWidth="500"/>
             <TextBlock x:Name="Proizvoditel" />
             <TextBlock x:Name="Postavshik" />
             <StackPanel Orientation="Horizontal">
@@ -21,5 +21,6 @@
             <TextBlock x:Name="Edinica" />
             <TextBlock x:Name="Kolichestvo" />
         </StackPanel>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Skidka"></TextBlock>
     </DockPanel>
 </UserControl>
