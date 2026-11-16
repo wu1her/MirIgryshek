@@ -23,7 +23,7 @@ namespace MirIgryshek.Windows
             InitializeComponent();
 
             ManeCardText.Text =  tovar.TovarKategoria.First().IdKategoriaNavigation.Ima + " | "+ tovar.Ima;
-            Opisanie.Text = "Описание: "+ tovar.Opisanie;
+            Opisanie.Text = "Описание: " + tovar.Opisanie;
             Proizvoditel.Text = "Производитель: " + tovar.TovarProizvoditel.First().IdProizvoditelNavigation.Ima;
             Postavshik.Text = "Поставщик: " + tovar.TovarPostavshik.First().IdPostavshikNavigation.Ima;
             Cena.Text = "Цена: " + tovar.Cena + " ";
