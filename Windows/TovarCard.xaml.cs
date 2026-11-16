@@ -20,7 +20,7 @@ namespace MirIgryshek.Windows
     {
         public TovarCard(Tovar tovar)
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             ManeCardText.Text =  tovar.TovarKategoria.First().IdKategoriaNavigation.Ima + " | "+ tovar.Ima;
             Opisanie.Text = "Описание: " + tovar.Opisanie;
