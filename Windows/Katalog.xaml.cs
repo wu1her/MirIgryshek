@@ -58,7 +58,7 @@ namespace MirIgryshek.Windows
             }
         }
 
-        private void Obnovatovar()
+        public void Obnovatovar()
         {
             if(vseTovary == null)
                 return;
@@ -131,9 +131,10 @@ namespace MirIgryshek.Windows
 
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
-            var okno = new MirIgryshek.Windows.Zakazi(UserBlock.Text, pravoredactirovania);
+            var okno = new MirIgryshek.Windows.Zakazi(
+                UserBlock.Text, pravoredactirovania);
+
             okno.ShowDialog();
-            Close();
         }
 
         private void Card_Click(object sender, RoutedEventArgs e)
@@ -142,7 +143,17 @@ namespace MirIgryshek.Windows
             var tovar = (Tovar)card.Tag;
 
             var okno = new TovarRedactir(tovar);
+            Hide();
             okno.ShowDialog();
+            Show();
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(e.NewValue.Equals(true))
+            {
+                Obnovatovar();
+            }
         }
     }
 }

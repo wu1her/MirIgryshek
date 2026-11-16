@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using MirIgryshek.Models;
+using MirIgryshek.Windows;
+
 
 namespace MirIgryshek.Windows
 {
