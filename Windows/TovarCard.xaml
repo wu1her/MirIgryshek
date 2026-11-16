@@ -8,7 +8,10 @@
         
         Height="200" Width="900" Background="{StaticResource Akcent}">
     <DockPanel>
+        <Border BorderThickness="2" BorderBrush="Black" Margin="2">
         <Image x:Name="Photo"/>
+        </Border>
+        <Border BorderThickness="2" BorderBrush="Black" Margin="4">
         <StackPanel Orientation="Vertical" MaxWidth="800">
             <TextBlock x:Name="ManeCardText" TextWrapping="Wrap" MaxWidth="500"/>
             <TextBlock x:Name="Opisanie" TextWrapping="Wrap" MaxWidth="500"/>
@@ -21,6 +24,9 @@
             <TextBlock x:Name="Edinica" />
             <TextBlock x:Name="Kolichestvo" />
         </StackPanel>
+        </Border>
+        <Border BorderThickness="2" BorderBrush="Black" Margin="4">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Skidka"></TextBlock>
+        </Border>
     </DockPanel>
 </UserControl>

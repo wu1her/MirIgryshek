@@ -1,0 +1,31 @@
+﻿<Window x:Class="MirIgryshek.Windows.ZakazRedactir"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MirIgryshek.Windows"
+        mc:Ignorable="d"
+        Title="Заказы" Style="{StaticResource Window}">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel Orientation="Vertical">
+            <TextBlock>Пользователь</TextBlock>
+            <TextBox x:Name="Login"/>
+            <TextBlock>Категория</TextBlock>
+            <ComboBox x:Name="Kategoria" DisplayMemberPath="Ima" SelectedValuePath="IdKategoria"></ComboBox>
+            <TextBlock>Производитель</TextBlock>
+            <ComboBox x:Name="Proizvoditel" DisplayMemberPath="Ima" SelectedValuePath="IdProizvoditel"></ComboBox>
+            <TextBlock>Поставщик</TextBlock>
+            <ComboBox x:Name="Postavshik" DisplayMemberPath="Ima" SelectedValuePath="IdPostavshik"></ComboBox>
+            <TextBlock>Цена</TextBlock>
+            <TextBox x:Name="Cena"/>
+            <TextBlock>Количество на складе</TextBlock>
+            <TextBox x:Name="Kolichestvo"/>
+            <TextBlock>Измерение</TextBlock>
+            <TextBox x:Name="Izmerenie" MaxLength="5"/>
+            <TextBlock>Скидка</TextBlock>
+            <TextBox x:Name="Skidka"/>
+
+            <Button x:Name="Save" Style="{StaticResource Button}">Сохранить</Button>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

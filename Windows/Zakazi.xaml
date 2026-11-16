@@ -1,0 +1,31 @@
+﻿<Window x:Class="MirIgryshek.Windows.Zakazi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MirIgryshek.Windows"
+        mc:Ignorable="d"
+        Title="Заказы" Style="{StaticResource Window}">
+    <DockPanel>
+        <DockPanel Height="70" DockPanel.Dock="Top">
+            <Image Source="/Resources/icon.png"/>
+            <TextBlock Style="{StaticResource MenuText}">Мир игрушек</TextBlock>
+            <TextBlock Style="{StaticResource MenuText}">Заказы</TextBlock>
+            <Button Style="{StaticResource Button}" x:Name="Back" Click="Back_Click">Назад</Button>
+            <Button Style="{StaticResource Button}" x:Name="ZakazAdd" Click="ZakazAdd_Click" Visibility="Collapsed">Добавление заказа</Button>
+            <TextBlock Style="{StaticResource MenuText}" x:Name="UserBlock" DockPanel.Dock="Right" Width="350"></TextBlock>
+        </DockPanel>
+        <DataGrid x:Name="SpisokZakazi" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Nomer}"/>
+                <DataGridTextColumn Header="Пользователь" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Товары" Binding="{Binding Tovar}"/>
+                <DataGridTextColumn Header="Пункт выдачи" Binding="{Binding Pynkt}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Код" Binding="{Binding Kod}"/>
+                <DataGridTextColumn Header="Дата заказа" Binding="{Binding DataZakaza, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Дата доставки" Binding="{Binding DataDoskavka, StringFormat=dd.MM.yyyy}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

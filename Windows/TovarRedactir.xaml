@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MirIgryshek.Windows"
         mc:Ignorable="d"
-        Title="TovarRedactir" Style="{StaticResource Window}">
+        Title="Редактирование товара" Style="{StaticResource Window}">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <StackPanel Orientation="Vertical">
             <TextBlock>Название</TextBlock>

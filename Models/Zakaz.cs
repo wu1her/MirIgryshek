@@ -17,7 +17,6 @@ namespace MirIgryshek.Models
         }
 
         public int Nomer { get; set; }
-        public string Login { get; set; }
         public int Kod { get; set; }
         public DateTime DataZakaza { get; set; }
         public DateTime DataDostavka { get; set; }

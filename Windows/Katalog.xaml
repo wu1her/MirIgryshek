@@ -13,15 +13,15 @@
             <TextBlock Style="{StaticResource MenuText}">Мир игрушек</TextBlock>
             <TextBlock Style="{StaticResource MenuText}">Каталог</TextBlock>
             <Button Style="{StaticResource Button}" x:Name="Exit" Click="Exit_Click">Выйти</Button>
-            <Button Style="{StaticResource Button}" x:Name="TovarAdd" Click="TovarAdd_Click" Visibility="Visible">Добавление товара</Button>
-            <Button Style="{StaticResource Button}" x:Name="Zakazi" Click="Zakazi_Click" Visibility="Visible">Заказы</Button>
+            <Button Style="{StaticResource Button}" x:Name="TovarAdd" Click="TovarAdd_Click" Visibility="Collapsed">Добавление товара</Button>
+            <Button Style="{StaticResource Button}" x:Name="Zakazi" Click="Zakazi_Click" Visibility="Collapsed">Заказы</Button>
             <TextBlock Style="{StaticResource MenuText}" x:Name="UserBlock" DockPanel.Dock="Right" Width="350"></TextBlock>
         </DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" x:Name="Filtr" Visibility="Visible">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" x:Name="Filtr" Visibility="Collapsed">
             <TextBox Width="200" x:Name="Poisk" TextChanged="PoiskVvod"/>
             <ComboBox x:Name="Filtr_postavshik" DisplayMemberPath="Ima" SelectionChanged="FiltrSelect">
             </ComboBox>
-            <ComboBox x:Name="Sortirovka" SelectionChanged="FiltrSelect">
+            <ComboBox x:Name="Sortirovka" SelectionChanged="FiltrSelect" SelectedIndex="0">
                 <ComboBoxItem Content="Цена по возрастанию"/>
                 <ComboBoxItem Content="Цена по убыванию"/>
                 <ComboBoxItem Content="Склад по возрастанию"/>

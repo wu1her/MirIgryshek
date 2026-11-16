@@ -199,6 +199,9 @@
     <Compile Include="Windows\Katalog.xaml.cs">
       <DependentUpon>Katalog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\OknoZakaza.xaml.cs">
+      <DependentUpon>OknoZakaza.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TovarCard.xaml.cs">
       <DependentUpon>TovarCard.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,12 @@
     <Compile Include="Windows\TovarRedactir.xaml.cs">
       <DependentUpon>TovarRedactir.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Zakazi.xaml.cs">
+      <DependentUpon>Zakazi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ZakazRedactir.xaml.cs">
+      <DependentUpon>ZakazRedactir.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,11 +226,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\OknoZakaza.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\TovarCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\TovarRedactir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Zakazi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ZakazRedactir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

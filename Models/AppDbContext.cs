@@ -291,14 +291,11 @@ namespace MirIgryshek.Models
 
                 entity.Property(e => e.DataZakaza).HasColumnType("date");
 
-                entity.Property(e => e.Login)
-                    .IsRequired()
-                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<ZakazPynkti>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(svyaz => new { svyaz.Nomer, svyaz.IdPynkt });
 
                 entity.ToTable("Zakaz_Pynkti");
 

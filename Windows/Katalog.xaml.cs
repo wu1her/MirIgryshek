@@ -34,13 +34,13 @@ namespace MirIgryshek.Windows
                     role => role.Login == user.Login && (role.IdRole == 1 || role.IdRole == 2)))
                 {
                     Filtr.Visibility = Visibility.Visible;
+                    Zakazi.Visibility = Visibility.Visible;
                 }
 
                 if (user != null && db.PolzovatelRole.Any(
                     role => role.Login == user.Login && role.IdRole == 1))
                 {
                     TovarAdd.Visibility = Visibility.Visible;
-                    Zakazi.Visibility = Visibility.Visible;
                     pravoredactirovania = true;
                 }
 
@@ -131,8 +131,9 @@ namespace MirIgryshek.Windows
 
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
-            //var okno = new Zakazi(null);
-            //Close();
+            var okno = new MirIgryshek.Windows.Zakazi(UserBlock.Text, pravoredactirovania);
+            okno.ShowDialog();
+            Close();
         }
 
         private void Card_Click(object sender, RoutedEventArgs e)

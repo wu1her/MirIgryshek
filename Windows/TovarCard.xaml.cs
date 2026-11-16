@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MirIgryshek.Models;
 
 namespace MirIgryshek.Windows
+
 {
     public partial class TovarCard : UserControl
     {
