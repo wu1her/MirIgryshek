@@ -80,7 +80,7 @@ namespace MirIgryshek.Windows
             try
             {
                 var photo = new BitmapImage(new Uri(dialogphoto.FileName));
-                if (photo.Width > 300 ||  photo.Height > 200)
+                if (photo.PixelWidth > 300 || photo.PixelHeight > 200)
                 {
                     MessageBox.Show("Фото слишком большое");
                     return;
@@ -124,6 +124,88 @@ namespace MirIgryshek.Windows
             {
                 MessageBox.Show(errors.ToString());
                 return;
+            }
+
+            try
+            {
+                using(var db = new AppDbContext())
+                using(var tranzakcia = db.Database.BeginTransaction())
+                {
+                    Tovar zapis;
+
+                    if (tovar == null)
+                    {
+                        int nomer = 0;
+
+                        foreach (var articul in db.Tovar.Select(zapisTovara => zapisTovara.Articul).ToList())
+                        {
+                            int chislo;
+
+                            if (int.TryParse(articul, out chislo) && chislo > nomer)
+                                nomer = chislo;
+                        }
+
+                        zapis = new Tovar
+                        {
+                            Articul = checked(nomer + 1).ToString(),
+                            Photo = "picture.png"
+                        };
+
+                        db.Tovar.Add(zapis);
+                    }
+                    else
+                    {
+                        zapis = db.Tovar.Find(tovar.Articul);
+
+                        if (zapis == null)
+                            throw new Exception("Товар уже удалён.");
+                    }
+                    zapis.Ima = Ima.Text.Trim();
+                    zapis.Opisanie = Opisanie.Text.Trim();
+                    zapis.Izmerenie = Izmerenie.Text.Trim();
+                    zapis.Cena = cena;
+                    zapis.Kolichestvo = kolichestvo;
+                    zapis.Skidka = skidka;
+
+                    db.TovarKategoria.RemoveRange(
+                        db.TovarKategoria.Where(svyaz => svyaz.Articul == zapis.Articul));
+
+                    db.TovarPostavshik.RemoveRange(
+                        db.TovarPostavshik.Where(svyaz => svyaz.Articul == zapis.Articul));
+
+                    db.TovarProizvoditel.RemoveRange(
+                        db.TovarProizvoditel.Where(svyaz => svyaz.Articul == zapis.Articul));
+
+                    db.SaveChanges();
+
+                    db.TovarKategoria.Add(new TovarKategoria
+                    {
+                        Articul = zapis.Articul,
+                        IdKategoria = (int)Kategoria.SelectedValue
+                    });
+
+                    db.TovarPostavshik.Add(new TovarPostavshik
+                    {
+                        Articul = zapis.Articul,
+                        IdPostavshik = (int)Postavshik.SelectedValue
+                    });
+
+                    db.TovarProizvoditel.Add(new TovarProizvoditel
+                    {
+                        Articul = zapis.Articul,
+                        IdProizvoditel = (int)Proizvoditel.SelectedValue
+                    });
+
+                    db.SaveChanges();
+                    tranzakcia.Commit();
+                    Close();
+                }
+            } catch (Exception oshibka)
+            {
+                MessageBox.Show(
+                    oshibka.GetBaseException().Message,
+                    "Ошибка сохранения");
+
             }
         }
     }
