@@ -3,11 +3,13 @@ using MirIgryshek.Models;
 using System.Linq;
 using System.Windows;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace MirIgryshek.Windows
 {
     public partial class Katalog : Window
     {
+        private bool pravoredactirovania;
         private List<Tovar> vseTovary;
         public Katalog(Polzovatel user)
         {
@@ -39,6 +41,7 @@ namespace MirIgryshek.Windows
                 {
                     TovarAdd.Visibility = Visibility.Visible;
                     Zakazi.Visibility = Visibility.Visible;
+                    pravoredactirovania = true;
                 }
 
                 var postavshik = db.Postavshik.ToList();
@@ -86,7 +89,15 @@ namespace MirIgryshek.Windows
             Cards.Children.Clear();
             foreach(var tovar in tovary)
             {
-                Cards.Children.Add(new TovarCard(tovar));
+                var card = new TovarCard(tovar);
+                card.Tag = tovar;
+
+                if(pravoredactirovania == true)
+                {
+                    card.MouseLeftButtonUp += Card_Click;
+                }
+                Cards.Children.Add(card);
+
             }
 
         }
@@ -122,6 +133,15 @@ namespace MirIgryshek.Windows
         {
             //var okno = new Zakazi(null);
             //Close();
+        }
+
+        private void Card_Click(object sender, RoutedEventArgs e)
+        {
+            var card = (TovarCard)sender;
+            var tovar = (Tovar)card.Tag;
+
+            var okno = new TovarRedactir(tovar);
+            okno.ShowDialog();
         }
     }
 }

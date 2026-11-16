@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         Height="200" Width="900" Background="{StaticResource Akcent}">
-    <DockPanel >
+    <DockPanel>
         <Image x:Name="Photo"/>
         <StackPanel Orientation="Vertical" MaxWidth="800">
             <TextBlock x:Name="ManeCardText" TextWrapping="Wrap" MaxWidth="500"/>

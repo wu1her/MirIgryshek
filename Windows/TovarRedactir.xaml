@@ -9,9 +9,9 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <StackPanel Orientation="Vertical">
             <TextBlock>Название</TextBlock>
-            <TextBox x:Name="Ima"/>
+            <TextBox x:Name="Ima" MaxLength="200"/>
             <TextBlock>Описание</TextBlock>
-            <TextBox x:Name="Opisanie"/>
+            <TextBox x:Name="Opisanie" MaxLength="300" />
             <TextBlock>Категория</TextBlock>
             <ComboBox x:Name="Kategoria" DisplayMemberPath="Ima" SelectedValuePath="IdKategoria"></ComboBox>
             <TextBlock>Производитель</TextBlock>
@@ -23,7 +23,7 @@
             <TextBlock>Количество на складе</TextBlock>
             <TextBox x:Name="Kolichestvo"/>
             <TextBlock>Измерение</TextBlock>
-            <TextBox x:Name="Izmerenie"/>
+            <TextBox x:Name="Izmerenie" MaxLength="5"/>
             <TextBlock>Скидка</TextBlock>
             <TextBox x:Name="Skidka"/>
             <Image x:Name="Photo" Source="/Resources/picture.png" Width="300" Height="200" Stretch="Uniform"/>
